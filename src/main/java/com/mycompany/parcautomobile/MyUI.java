@@ -30,30 +30,32 @@ import javax.servlet.annotation.WebServlet;
 @Widgetset("com.mycompany.parcautomobile.MyAppWidgetset")
 public class MyUI extends UI {
 
-    private Grid contactList = new Grid();
-    private Table contactTable = new Table();
+    private static Grid contactList = new Grid();
+    private Grid vc = new Grid();
+    private Grid grillev = new Grid();
 
     @Override
     protected void init(VaadinRequest vaadinrequest) {
-        configureComponents();  // configuration des composants
-        buildLayout();          //  construction de la vue
+
+        configureComponents();
+        buildLayout();// configuration des composants
+        //  construction de la vue
     }
 
     private void configureComponents() {
-
-        // Chargement des données.
-        Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000);
-        Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500);
-        Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005);
+        Init.getInstance();
+        vc.setContainerDataSource(Vehicule.getPb(15000));
+        vc.setColumnOrder("marque", "modele", "prix");
+        vc.removeColumn("id");
+        vc.setSizeFull();
 
         contactList.setContainerDataSource(Vehicule.getVehicules());
 
-        //contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
-        contactList.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
-        contactList.removeColumn("id");  // masquer la colonne
-        //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
+        //contactList.setColumnOrder("marque", "modele", "prix","visiteur");
         contactList.setSizeFull();
 
+        grillev.setContainerDataSource(Visiteur.getPersonnes());
+        grillev.setSizeFull();
     }
 
     private void buildLayout() {
@@ -61,10 +63,16 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         // ajouts de composants
-        layout.addComponent(new Label(" Parc de véhicule"));
+        layout.addComponent(new Label(" Parc de véhicule :"));
         layout.addComponent(contactList);
+
+        layout.addComponent(new Label(" Grille Visiteur :"));
+        layout.addComponent(grillev);
+
+        layout.addComponent(new Label("Voiture -15000 :"));
+        layout.addComponent(vc);
         //layout.addComponent(contactTable);
-        setContent(layout);  // affectation de la vue
+        setContent(layout);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
