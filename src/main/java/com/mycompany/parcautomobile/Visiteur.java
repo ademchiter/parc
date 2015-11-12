@@ -6,6 +6,7 @@
 package com.mycompany.parcautomobile;
 
 import com.vaadin.data.util.BeanItemContainer;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,12 +21,18 @@ public class Visiteur implements java.io.Serializable {
     private String idVehicule = "0";
     private int leidVehicule;
     private static BeanItemContainer<Visiteur> personnes = new BeanItemContainer<>(Visiteur.class);
+    private static ArrayList<Visiteur> lp = new ArrayList<Visiteur>();
+    
+    public Visiteur(){
+        
+    }
 
     public Visiteur(int id, String nom, String prenom) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.personnes.addBean(this);
+        this.lp.add(this);
     }
 
     public int getID() {
@@ -55,6 +62,16 @@ public class Visiteur implements java.io.Serializable {
     public static BeanItemContainer<Visiteur> getPersonnes() {
         return personnes;
     }
+    
+    public static ArrayList<Visiteur> getLPersonnes() {
+        return lp;
+    }
+    
+    public static void setLPersonnes(ArrayList<Visiteur> v){
+        lp=v;
+    }
+    
+    
 
     public void addVehicule(Vehicule v) {
         leidVehicule = v.getId();

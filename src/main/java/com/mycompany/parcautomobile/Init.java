@@ -13,6 +13,7 @@ import java.beans.XMLEncoder;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -78,9 +79,9 @@ public class Init {
             encoder = new XMLEncoder(new BufferedOutputStream(
                     new FileOutputStream("utilisateur.xml")));
 
-            encoder.writeObject(vincent);
-            encoder.writeObject(marlon);
-            encoder.writeObject(alexy);
+            encoder.writeObject(vincent.getLPersonnes());
+            encoder.writeObject(marlon.getLPersonnes());
+            encoder.writeObject(alexy.getLPersonnes());;
             encoder.flush();
 
         } catch (final java.io.IOException e) {
@@ -93,24 +94,23 @@ public class Init {
 
     }
 
-    public void decodXML(){
+    public void decodXML() {
+
+        XMLDecoder decoder = null;
 
         try {
-            File file = new File("utilisateur.xml");
-            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
-                    .newInstance();
-            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Document document = documentBuilder.parse(file);
-            String nusr = document.getElementsByTagName("int").item(0).getTextContent();
-            String usr = document.getElementsByTagName("string").item(0).getTextContent();
-
-            System.out.println(nusr + "" + usr);
-        } catch (final java.io.IOException e) {
+            decoder = new XMLDecoder(new FileInputStream("utilisateur.xml"));
+            Visiteur.setLPersonnes((ArrayList<Visiteur>) decoder.readObject()); 
+            //final Visiteur visiteur = (Visiteur) decoder.readObject();
+            for (Visiteur uv : Visiteur.getLPersonnes()) {
+                System.out.println(uv.getPrenom());
+            }
+        } catch (final Exception e) {
             e.printStackTrace();
-        } catch (final ParserConfigurationException p){
-            p.printStackTrace();   
-        } catch (final SAXException s){
-            s.printStackTrace();   
-        } 
+        } finally {
+            if (decoder != null) {
+                decoder.close();
+            }
+        }
     }
 }
