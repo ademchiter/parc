@@ -19,6 +19,7 @@ public class Vehicule implements java.io.Serializable {
     private int id;
     private String marque;
     private String modele;
+    private int laGamme;
     private double prix;
     private static BeanItemContainer<Vehicule> vehicules = new BeanItemContainer<>(Vehicule.class);
     private static BeanItemContainer<Vehicule> vehiculesPC = new BeanItemContainer<>(Vehicule.class);
@@ -81,6 +82,20 @@ public class Vehicule implements java.io.Serializable {
             }
         }
         return vehiculesPC;
+    }
+
+    /**
+     * @return the laGamme
+     */
+    public int getLaGamme() {
+        return laGamme;
+    }
+
+    /**
+     * @param laGamme the laGamme to set
+     */
+    public void setLaGamme(int laGamme) {
+        this.laGamme = laGamme;
     }
 
 }
