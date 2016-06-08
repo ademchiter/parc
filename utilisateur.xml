@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_25" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList" id="ArrayList0">
+  <void method="add">
+   <object class="com.mycompany.parcautomobile.Visiteur">
+    <void property="ID">
+     <int>1</int>
+    </void>
+    <void property="nom">
+     <string>Dupont</string>
+    </void>
+    <void property="prenom">
+     <string>Paul</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.mycompany.parcautomobile.Visiteur">
+    <void property="ID">
+     <int>2</int>
+    </void>
+    <void property="nom">
+     <string>Dandre</string>
+    </void>
+    <void property="prenom">
+     <string>Clément</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.mycompany.parcautomobile.Visiteur">
+    <void property="ID">
+     <int>3</int>
+    </void>
+    <void property="nom">
+     <string>Villechalane</string>
+    </void>
+    <void property="prenom">
+     <string>Luc</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.mycompany.parcautomobile.Visiteur">
+    <void property="ID">
+     <int>4</int>
+    </void>
+    <void property="nom">
+     <string>Bunisset</string>
+    </void>
+    <void property="prenom">
+     <string>Francis</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.mycompany.parcautomobile.Visiteur">
+    <void property="ID">
+     <int>5</int>
+    </void>
+    <void property="nom">
+     <string>Clepkens</string>
+    </void>
+    <void property="prenom">
+     <string>Christophe</string>
+    </void>
+   </object>
+  </void>
+ </object>
+ <object idref="ArrayList0"/>
+ <object idref="ArrayList0"/>
+</java>

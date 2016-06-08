@@ -32,7 +32,8 @@ public class MyUI extends UI {
     private static Grid contactList = new Grid();
     private Grid vc = new Grid();
     private Grid grillev = new Grid();
-
+ 
+    
     @Override
     protected void init(VaadinRequest vaadinrequest) {
 
@@ -44,17 +45,21 @@ public class MyUI extends UI {
     private void configureComponents() {
         Init.getInstance();
         vc.setContainerDataSource(Vehicule.getPb(15000));
-        vc.setColumnOrder("marque", "modele", "prix");
+       vc.setColumnOrder("marque", "modele", "prix", "gamme");
         vc.removeColumn("id");
+        vc.removeColumn("gamme");
         vc.setSizeFull();
-
+     
+       
         contactList.setContainerDataSource(Vehicule.getVehicules());
 
-        //contactList.setColumnOrder("marque", "modele", "prix","visiteur");
+        contactList.setColumnOrder("id", "marque", "modele", "prix", "gamme");
         contactList.setSizeFull();
 
         grillev.setContainerDataSource(Visiteur.getPersonnes());
         grillev.setSizeFull();
+        
+
     }
 
     private void buildLayout() {
@@ -62,13 +67,13 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         // ajouts de composants
-        layout.addComponent(new Label(" Parc de véhicule :"));
+        layout.addComponent(new Label(" Liste véhicules :"));
         layout.addComponent(contactList);
 
-        layout.addComponent(new Label(" Grille Visiteur :"));
+        layout.addComponent(new Label("Visiteurs :"));
         layout.addComponent(grillev);
 
-        layout.addComponent(new Label("Voiture -15000 :"));
+        layout.addComponent(new Label("Voiture de moins de 15000 euros :"));
         layout.addComponent(vc);
         //layout.addComponent(contactTable);
         setContent(layout);

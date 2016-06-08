@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author vincent
+ * @author adem
  */
 public class Visiteur implements java.io.Serializable {
 
@@ -87,6 +87,9 @@ public class Visiteur implements java.io.Serializable {
 
     }
 
+        
+
+        
     public String getVehiculeUtilise() {
         return idVehicule;
     }

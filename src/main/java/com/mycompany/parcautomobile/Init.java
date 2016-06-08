@@ -37,7 +37,7 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author vincent
+ * @author adem
  */
 public class Init {
 
@@ -60,28 +60,37 @@ public class Init {
 
     public void encodXML() {
 
-        Visiteur vincent = new Visiteur(1, "Mazet", "Vincent");
-        Visiteur marlon = new Visiteur(2, "Chatte-illon", "Marlon");
-        Visiteur alexy = new Visiteur(3, "hivercruysse", "Alexy");
-
-        Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000);
-        Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500);
-        Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005);
-        Vehicule vehicule4 = new Vehicule(4, "Renault", "titine", 1);
-
-        alexy.addVehicule(vehicule4);
-        alexy.addVehicule(vehicule2);
-        alexy.addVehicule(vehicule1);
-        marlon.addVehicule(vehicule1);
-        marlon.addVehicule(vehicule2);
-
-        try {
+        Visiteur dupont = new Visiteur(1, "Dupont", "Paul");
+        Visiteur dandre = new Visiteur(2, "Dandre", "Clément");
+        Visiteur villechalane = new Visiteur(3, "Villechalane", "Luc");
+        Visiteur bunisset = new Visiteur(4, "Bunisset", "Francis");
+        Visiteur clepkens = new Visiteur(5, "Clepkens", "Christophe");
+        
+        Vehicule vehicule1 = new Vehicule(1, "Bmw", "I8", 150000, "Haute gamme");
+        Vehicule vehicule2 = new Vehicule(2, "Audi", "A4", 15005, "Haute gamme");
+        Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 13000, "Moyenne gamme");
+        Vehicule vehicule4 = new Vehicule(4, "Citroen", "C3", 10000, "Moyenne gamme");
+        Vehicule vehicule5 = new Vehicule(5, "Peugeot", "208", 12810, "Moyenne gamme");
+        Vehicule vehicule6 = new Vehicule(6, "Ford", "Focus", 11500, "Basse gamme");
+        Vehicule vehicule7 = new Vehicule(7, "Fiat", "Punto", 1500, "Basse gamme");
+        
+        dupont.addVehicule(vehicule4);
+        dupont.addVehicule(vehicule2);
+        dupont.addVehicule(vehicule1);
+        dandre.addVehicule(vehicule1);
+        dandre.addVehicule(vehicule2);
+        villechalane.addVehicule(vehicule6);
+        villechalane.addVehicule(vehicule5);
+        bunisset.addVehicule(vehicule3);
+        bunisset.addVehicule(vehicule2);
+        
+                try {
             encoder = new XMLEncoder(new BufferedOutputStream(
                     new FileOutputStream("utilisateur.xml")));
 
-            encoder.writeObject(vincent.getLPersonnes());
-            encoder.writeObject(marlon.getLPersonnes());
-            encoder.writeObject(alexy.getLPersonnes());;
+            encoder.writeObject(dupont.getLPersonnes());
+            encoder.writeObject(dandre.getLPersonnes());
+            encoder.writeObject(villechalane.getLPersonnes());;
             encoder.flush();
 
         } catch (final java.io.IOException e) {

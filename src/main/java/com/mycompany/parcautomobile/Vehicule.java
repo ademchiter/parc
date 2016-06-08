@@ -19,24 +19,27 @@ public class Vehicule implements java.io.Serializable {
     private int id;
     private String marque;
     private String modele;
-    private int laGamme;
+ 
     private double prix;
+    private String gamme;
     private static BeanItemContainer<Vehicule> vehicules = new BeanItemContainer<>(Vehicule.class);
     private static BeanItemContainer<Vehicule> vehiculesPC = new BeanItemContainer<>(Vehicule.class);
 
     public Vehicule() {
     }
 
-    public Vehicule(int id, String marque, String modele, double prix) {
+    public Vehicule(int id, String marque, String modele, double prix, String gamme) {
         this.id = id;
         this.marque = marque;
         this.modele = modele;
         this.prix = prix;
+        this.gamme = gamme;
         this.vehicules.addBean(this);
     }
 
     public String getMarque() {
         return marque;
+        
     }
 
     public String getModele() {
@@ -67,6 +70,14 @@ public class Vehicule implements java.io.Serializable {
         this.id = id;
     }
 
+    public String getGamme() {
+        return gamme;
+    }
+
+    public void setGamme(String gamme) {
+        this.gamme = gamme;
+    }
+    
     public static BeanItemContainer<Vehicule> getVehicules() {
         return vehicules;
     }
@@ -84,18 +95,5 @@ public class Vehicule implements java.io.Serializable {
         return vehiculesPC;
     }
 
-    /**
-     * @return the laGamme
-     */
-    public int getLaGamme() {
-        return laGamme;
-    }
-
-    /**
-     * @param laGamme the laGamme to set
-     */
-    public void setLaGamme(int laGamme) {
-        this.laGamme = laGamme;
-    }
-
+    
 }
