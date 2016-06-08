@@ -24,6 +24,7 @@ import javax.servlet.annotation.WebServlet;
 
 /**
  *
+ * @author SESSION 2
  */
 @Theme("mytheme")
 @Widgetset("com.mycompany.parcautomobile.MyAppWidgetset")
@@ -45,8 +46,8 @@ public class MyUI extends UI {
     private void configureComponents() {
         Init.getInstance();
         vc.setContainerDataSource(Vehicule.getPb(15000));
-       vc.setColumnOrder("marque", "modele", "prix", "gamme");
-        vc.removeColumn("id");
+        vc.setColumnOrder("marque", "modele", "prix", "gamme");  // choisir l'ordre des colonnes
+        vc.removeColumn("id"); // enlever la colonne
         vc.removeColumn("gamme");
         vc.setSizeFull();
      
@@ -76,9 +77,12 @@ public class MyUI extends UI {
         layout.addComponent(new Label("Voiture de moins de 15000 euros :"));
         layout.addComponent(vc);
         //layout.addComponent(contactTable);
-        setContent(layout);
+        setContent(layout); // affectation de la vue
     }
 
+    /**
+     *
+     */
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {

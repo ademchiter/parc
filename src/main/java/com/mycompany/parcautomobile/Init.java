@@ -44,14 +44,30 @@ import org.xml.sax.SAXException;
 public class Init {
 
     private static Init uniqueInstance;
+
+    /**
+     *
+     */
     public XMLDecoder decoder = null;
+
+    /**
+     *
+     */
     public XMLEncoder encoder = null;
 
+    /**
+     * @constructeur
+     */
+    
     private Init() {
         encodXML();
         decodXML();
     }
 
+    /**
+     *
+     * @return
+     */
     public static Init getInstance() {
         if (uniqueInstance == null) {
             uniqueInstance = new Init();
@@ -60,6 +76,9 @@ public class Init {
 
     }
 
+    /**
+     * Jeu d'essai
+     */
     public void encodXML() {
 
         Visiteur dupont = new Visiteur(1, "Dupont", "Paul");
@@ -76,6 +95,10 @@ public class Init {
         Vehicule vehicule6 = new Vehicule(6, "Ford", "Focus", 11500, "Basse gamme");
         Vehicule vehicule7 = new Vehicule(7, "Fiat", "Punto", 1500, "Basse gamme");
         
+        
+    /**
+     *  Affectation de véhicules
+     */
         dupont.addVehicule(vehicule4);
         dupont.addVehicule(vehicule2);
         dupont.addVehicule(vehicule1);
@@ -105,6 +128,9 @@ public class Init {
 
     }
 
+    /**
+     *
+     */
     public void decodXML() {
 
         XMLDecoder decoder = null;
